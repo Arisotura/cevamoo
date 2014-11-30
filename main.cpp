@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
+//#include <stdbool.h>
 
 typedef unsigned char u8;
 typedef unsigned short u16;
@@ -1442,7 +1442,7 @@ int main(int argc, char* argv[]) {
     fseek(fd, 0, SEEK_END);
 
     size_t len = ftell(fd);
-    char* p = malloc(len);
+    u8* p = new u8[len];
 
     if(p == NULL) {
         perror("malloc");
@@ -1466,6 +1466,6 @@ int main(int argc, char* argv[]) {
         printf("Failed to load firm.\n");
     }
 
-    free(p);
+    delete[] p;
     return 0;
 }
